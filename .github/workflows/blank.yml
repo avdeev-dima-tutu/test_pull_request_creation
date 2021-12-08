@@ -21,8 +21,8 @@ jobs:
           git checkout -b $BRANCH_NAME
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add **.png
-          git add **.txt
+          git add **.png || echo "skip png"
+          git add **.txt || echo "skip txt"
           git commit -m "record snapshots"
           git push --set-upstream origin $BRANCH_NAME
       - name: open PR
