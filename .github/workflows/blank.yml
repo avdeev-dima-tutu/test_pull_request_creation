@@ -13,33 +13,17 @@ jobs:
 
       - name: write file
         run: |
-          echo "Hello, world!" >> update.txt
-
-#          git checkout -b $BRANCH_NAME
-#       - name: commit
-#         run: |
-#           BRANCH_NAME="temp_branch_${{github.run_id}}"
-#           git fetch
-#           git config --local user.email "action@github.com"
-          
-#           git config --local user.name "GitHub Action"
-#           git add **.png || echo "skip png"
-#           git add **.txt || echo "skip txt"
-#           git commit -m "record snapshots"
-# #          git push --set-upstream origin $BRANCH_NAME
-# #       - name: open PR
-# #         uses: tutu-ru-mobile/create-pull-request@tutu
-# #         with:
-# #           title: "Record snapshot in ${{ github.ref }}"
-# #           access_token: "${{ secrets.GITHUB_TOKEN }}"
-# #           branch_from: "temp_branch_${{github.run_id}}"
-# #           branch_to: "${{ github.ref }}" #github.head_ref for PR
+          touch img.png
+          touch bad.wtf
+          mkdir -p dir/__Snapshot__/dir/
+          touch -p dir/__Snapshot__/dir/long_path.jpg
       - name: Create Pull Request
         uses: tutu-ru-mobile/create-pull-request@tutu
         with:
           add-pattern-array: |
             **.txt
             **.png
+            **__Snapshot__**.jpg
           token: ${{ secrets.GITHUB_TOKEN }}
 
 
