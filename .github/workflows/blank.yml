@@ -13,7 +13,7 @@ jobs:
 
       - name: write file
         run: |
-          echo "Hello, world!" > update.txt
+          echo "Hello, world!" >> update.txt
       - name: commit
         run: |
           BRANCH_NAME="temp_branch_${{github.run_id}}"
