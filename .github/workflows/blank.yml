@@ -14,11 +14,12 @@ jobs:
       - name: write file
         run: |
           echo "Hello, world!" >> update.txt
+
+#          git checkout -b $BRANCH_NAME
       - name: commit
         run: |
           BRANCH_NAME="temp_branch_${{github.run_id}}"
           git fetch
-          git checkout -b $BRANCH_NAME
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add **.png || echo "skip png"
