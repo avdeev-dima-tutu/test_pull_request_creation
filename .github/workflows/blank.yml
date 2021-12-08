@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  open-pr:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: write file
+        run: |
+          echo "Hello, world!" > update.txt
+      - name: commit
+        run: |
+          BRANCH_NAME="temp_branch_${{github.run_id}}"
+          git fetch
+          git checkout -b $BRANCH_NAME
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add **.png
+          git add **.txt
+          git commit -m "record snapshots"
+          git push --set-upstream origin $BRANCH_NAME
+      - name: open PR
+        uses: tutu-ru-mobile/action_create_pull_request@tag0.4
+        with:
+          title: "Record snapshot in ${{ github.ref }}"
+          access_token: "${{ secrets.GITHUB_TOKEN }}"
+          branch_from: "temp_branch_${{github.run_id}}"
+          branch_to: "${{ github.ref }}" #github.head_ref for PR
