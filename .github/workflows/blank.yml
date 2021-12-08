@@ -24,7 +24,3 @@ jobs:
             **.txt
             **some/dirs**.png
           token: ${{ secrets.GITHUB_TOKEN }}
-
-
-
-
