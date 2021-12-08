@@ -39,6 +39,5 @@ jobs:
         with:
           add-pattern-array: |
             **.txt
-
-
+          token: ${{ secrets.GITHUB_TOKEN }}
 
