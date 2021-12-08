@@ -21,6 +21,7 @@ jobs:
           BRANCH_NAME="temp_branch_${{github.run_id}}"
           git fetch
           git config --local user.email "action@github.com"
+          
           git config --local user.name "GitHub Action"
           git add **.png || echo "skip png"
           git add **.txt || echo "skip txt"
