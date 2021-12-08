@@ -21,9 +21,7 @@ jobs:
         uses: tutu-ru-mobile/create-pull-request@tutu
         with:
           add-pattern-array: |
-            **.txt
-            **.png
-            **__Snapshot__**.jpg
+            **__Snapshot__**
           token: ${{ secrets.GITHUB_TOKEN }}
 
 
