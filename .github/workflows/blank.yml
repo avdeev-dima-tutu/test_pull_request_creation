@@ -25,7 +25,7 @@ jobs:
           git add **.png || echo "skip png"
           git add **.txt || echo "skip txt"
           git commit -m "record snapshots"
-          git push --set-upstream origin $BRANCH_NAME
+#          git push --set-upstream origin $BRANCH_NAME
 #       - name: open PR
 #         uses: tutu-ru-mobile/create-pull-request@tutu
 #         with:
